@@ -56,28 +56,26 @@ const otherLinks=[
         {mainLinks.map(
             ({icon,name})=> {
                 return(
-                    <li Key={name} className='pl-6 py-3 hover:bg-zinc-600 ${name === "Home" "bg-slate-600" : " "}'>    
+                    <li key={name} className='pl-6 py-3 hover:bg-zinc-600'>    
                         <a href='#' className='flex items-center gap-4 text-2xl margin-left-0'>
-                        {icon}
-                        <span className='text-sm tracking-wider'>{name}</span>
+                            {icon}
+                            <span className='text-sm tracking-wider'>{name}</span>
                         </a>
                     </li>
-
                 )
             }
         )}
     </ul>
-    <ul className=' line-8 flex flex-col border-b-1 border-gray-800 mt-4 pb-4'>
+    <ul className='flex flex-col border-b-1 border-gray-800 mt-4 pb-4'>
         {otherLinks.map(
             ({icon,name})=> {
                 return(
-                    <li Key={name} className='pl-6 py-3 hover:bg-zinc-600 ${name === "Home" "bg-slate-600" : " "}'>    
+                    <li key={name} className='pl-6 py-3 hover:bg-zinc-600'>    
                         <a href='#' className='flex items-center gap-4 text-2xl margin-left-0'>
-                        {icon}
-                        <span className='text-sm tracking-wider'>{name}</span>
+                            {icon}
+                            <span className='text-sm tracking-wider'>{name}</span>
                         </a>
                     </li>
-
                 )
             }
         )}

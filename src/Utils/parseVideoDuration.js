@@ -1,33 +1,33 @@
 export const parseVideoDuration = (duration) => {
-   
+    if (!duration) return "0:00";
 
-
+    // Remove "PT" prefix and split into parts
     const durationParts = duration
-    .replace("PT","")
-    .replace("H",":")
-    .replace("M",":")
-    .replace("S","")
-    .split(":");
+        .replace("PT", "")
+        .replace("H", ":")
+        .replace("M", ":")
+        .replace("S", "")
+        .split(":");
 
-    
+    // Pad numbers less than 10 with leading zero
+    const padTime = (num) => parseInt(num) < 10 ? `0${parseInt(num)}` : num;
 
-    if(durationParts.length === 3){
-        return `${durationParts[0]}:${parseInt(durationParts[1])<10 ? `0${durationParts[1]}`:durationParts[1]
-    }:${
-        parseInt(durationParts[2])<10 ? `0${durationParts[2]}`:durationParts[2]
-    }`;
+    // Handle different duration formats
+    if (durationParts.length === 3) {
+        // Format: hours:minutes:seconds
+        return `${durationParts[0]}:${padTime(durationParts[1])}:${padTime(durationParts[2])}`;
     }
 
-    if(durationParts.length === 2){
-        return `${durationParts[0]}:${parseInt(durationParts[1])<10 ? `0${durationParts[1]}`:durationParts[1]
-    }`;
+    if (durationParts.length === 2) {
+        // Format: minutes:seconds
+        return `${durationParts[0]}:${padTime(durationParts[1])}`;
     }
 
-    if(durationParts.length === 1){
-        return `0:${parseInt(durationParts[0])<10 ? `0${durationParts[0]}`:durationParts[0]
-    }`;
+    if (durationParts.length === 1) {
+        // Format: seconds only
+        return `0:${padTime(durationParts[0])}`;
     }
 
-    return ""
+    return "0:00";
 }
 

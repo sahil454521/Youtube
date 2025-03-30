@@ -4,7 +4,6 @@ import { parseData } from "../../utils/parseData";
 
 const API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
-
 console.log('API Key available:', !!API_KEY);
 
 export const getHomePageVideos = createAsyncThunk(
@@ -15,7 +14,6 @@ export const getHomePageVideos = createAsyncThunk(
                 youtubeApp: {nextPageToken: nextPageTokenFromState, videos},
             } = getState();
 
-         
             console.log('Current state:', { nextPageToken: nextPageTokenFromState, videosCount: videos.length });
 
             const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search`, {
@@ -29,13 +27,11 @@ export const getHomePageVideos = createAsyncThunk(
                 }
             });
 
-           
             console.log('API Response:', response.data);
 
             const items = response.data.items;
             const parsedData = await parseData(items);
 
-           
             console.log('Parsed Data:', parsedData);
 
             return {
